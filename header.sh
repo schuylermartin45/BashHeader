@@ -51,14 +51,14 @@ function name {
 
 ####   GETOPTS   ####
 while getopts ":v" opt; do
-  case $opt in
-    v)
-      
-      ;;
-    *)
-      
-      ;;
-  esac
+    case $opt in
+        v)
+            
+            ;;
+        *)
+            
+            ;;
+    esac
 done
 
 ####    MAIN     ####
