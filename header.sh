@@ -17,34 +17,21 @@
 
 #Functions for wrapping echo for color and STDERR
 function echoerr {
-    if [[ ! ${CRON} = ${ON} ]]; then
-        tput setaf 1
-    fi
+    tput setaf 1
     echo "ERROR: "${@} 1>&2 
-    if [[ ! ${CRON} = ${ON} ]]; then
-        tput sgr0
-    fi
+    tput sgr0
 }
 
 function echowarn {
-    if [[ ! ${CRON} = ${ON} ]]; then
-        tput setaf 3
-    fi
+    tput setaf 3
     echo "WARNING: "${@}
-    if [[ ! ${CRON} = ${ON} ]]; then
-        tput sgr0
-    fi
+    tput sgr0
 }
 
 function echosucc {
-
-    if [[ ! ${CRON} = ${ON} ]]; then
-        tput setaf 2
-    fi
+    tput setaf 2
     echo ${@}
-    if [[ ! ${CRON} = ${ON} ]]; then
-        tput sgr0
-    fi
+    tput sgr0
 }
 
 #[DESCRIPTION]
