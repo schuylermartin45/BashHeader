@@ -10,28 +10,36 @@
 ####  CONSTANTS  ####
 
 ####    FLAGS    ####
+#All flags are = 0 for on
+#Quiet mode
+QUIET=1
 
 #### GLOBAL VARS ####
 
 ####  FUNCTIONS  ####
 
-#Functions for wrapping echo for color and STDERR
 function echoerr {
-    tput setaf 1
-    echo "ERROR: "${@} 1>&2 
-    tput sgr0
+    if [[ ! ${QUIET} = 0 ]]; then
+        tput setaf 1
+        echo "ERROR: "${@} 1>&2
+        tput sgr0
+    fi
 }
 
 function echowarn {
-    tput setaf 3
-    echo "WARNING: "${@}
-    tput sgr0
+    if [[ ! ${QUIET} = 0 ]]; then
+        tput setaf 3
+        echo "WARNING: "${@}
+        tput sgr0
+    fi
 }
 
 function echosucc {
-    tput setaf 2
-    echo ${@}
-    tput sgr0
+    if [[ ! ${QUIET} = 0 ]]; then
+        tput setaf 2
+        echo ${@}
+        tput sgr0
+    fi
 }
 
 #[DESCRIPTION]
@@ -50,13 +58,13 @@ function name {
 }
 
 ####   GETOPTS   ####
-while getopts ":v" opt; do
+while getopts ":q" opt; do
     case $opt in
-        v)
-            
+        q)
+            QUIET=0
             ;;
         *)
-            
+            echoerr "Usage: "
             ;;
     esac
 done
@@ -66,4 +74,4 @@ function main {
 
 }
 
-main
+main "${@}"
