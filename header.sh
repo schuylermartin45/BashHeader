@@ -8,6 +8,7 @@
 #
 
 ####  CONSTANTS  ####
+USAGE="Usage: [-q] ./"
 
 ####    FLAGS    ####
 #All flags are = 0 for on
@@ -64,14 +65,21 @@ while getopts ":q" opt; do
             QUIET=0
             ;;
         *)
-            echoerr "Usage: "
+            echo ${USAGE}
+            exit 1
             ;;
     esac
 done
 
 ####    MAIN     ####
 function main {
-
+    #shift after reading getopts
+    shift $(($OPTIND - 1))
+    #no args after flags, present usage message
+    if [[ ${#@} = 0 ]]; then
+        echo ${USAGE}
+        exit 1
+    fi
 }
 
 main "${@}"
