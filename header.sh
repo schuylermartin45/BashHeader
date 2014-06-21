@@ -21,25 +21,37 @@ QUIET=1
 
 function echoerr {
     if [[ ! ${QUIET} = 0 ]]; then
-        tput setaf 1
+        if [[ ! -z ${TERM} ]]; then
+            tput setaf 1
+        fi
         echo "ERROR: "${@} 1>&2
-        tput sgr0
+        if [[ ! -z ${TERM} ]]; then
+            tput sgr0
+        fi
     fi
 }
 
 function echowarn {
     if [[ ! ${QUIET} = 0 ]]; then
-        tput setaf 3
+        if [[ ! -z ${TERM} ]]; then
+            tput setaf 3
+        fi
         echo "WARNING: "${@}
-        tput sgr0
+        if [[ ! -z ${TERM} ]]; then
+            tput sgr0
+        fi
     fi
 }
 
 function echosucc {
     if [[ ! ${QUIET} = 0 ]]; then
-        tput setaf 2
+        if [[ ! -z ${TERM} ]]; then
+            tput setaf 2
+        fi
         echo ${@}
-        tput sgr0
+        if [[ ! -z ${TERM} ]]; then
+            tput sgr0
+        fi
     fi
 }
 
