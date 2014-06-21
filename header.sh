@@ -8,7 +8,7 @@
 #
 
 ####  CONSTANTS  ####
-USAGE="Usage: [-q] ./"
+USAGE="Usage: ./ [-q] "
 
 ####    FLAGS    ####
 #All flags are = 0 for on
