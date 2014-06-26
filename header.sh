@@ -77,7 +77,7 @@ while getopts ":q" opt; do
             QUIET=0
             ;;
         *)
-            echo ${USAGE}
+            echoerr ${USAGE}
             exit 1
             ;;
     esac
@@ -89,7 +89,7 @@ function main {
     shift $(($OPTIND - 1))
     #no args after flags, present usage message
     if [[ ${#@} = 0 ]]; then
-        echo ${USAGE}
+        echoerr ${USAGE}
         exit 1
     fi
 }
